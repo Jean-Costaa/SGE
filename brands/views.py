@@ -54,3 +54,8 @@ class BrandDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
 class BrandCreateListAPIView(generics.ListCreateAPIView):
     queryset = models.Brand.objects.all()
     serializer_class = serializers.BrandSerializers
+
+
+class BrandRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Brand.objects.all()
+    serializer_class = serializers.BrandSerializers
