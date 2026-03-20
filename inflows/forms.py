@@ -11,7 +11,7 @@ class InflowForme(forms.ModelForm):
             'supplier': forms.Select({'class': 'form-control'}),
             'product': forms.Select({'class': 'form-control'}),
             'quantity': forms.NumberInput({'class': 'form-control'}),
-            'descripition': forms.Textarea({'class': 'form-control', 'rows':3}),
+            'descripition': forms.Textarea({'class': 'form-control', 'rows': 3}),
         }
         labels = {
             'supplier': 'Fornecedor',

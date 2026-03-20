@@ -19,9 +19,9 @@ class OutflowListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
 
         if product:
             queryset = queryset.filter(product__title__icontains=product)
- 
+
         return queryset
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['sales_metrics'] = metrics.get_sales_metrics()
@@ -49,4 +49,4 @@ class OutflowCreateListAPIView(generics.ListCreateAPIView):
 
 class OutflowRetrieveAPIView(generics.RetrieveAPIView):
     queryset = models.Outflow.objects.all()
-    serializer_class = serializers.OutflowSerializers    
+    serializer_class = serializers.OutflowSerializers

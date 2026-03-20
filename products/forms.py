@@ -1,5 +1,4 @@
 from django import forms
-from django.core.exceptions import ValidationError
 from . import models
 
 
@@ -12,7 +11,7 @@ class ProductForme(forms.ModelForm):
             'title': forms.TextInput({'class': 'form-control'}),
             'category': forms.Select({'class': 'form-control'}),
             'brand': forms.Select({'class': 'form-control'}),
-            'description': forms.Textarea({'class': 'form-control', 'rows':3}),
+            'description': forms.Textarea({'class': 'form-control', 'rows': 3}),
             'serie_number': forms.TextInput({'class': 'form-control'}),
             'cost_price': forms.NumberInput({'class': 'form-control'}),
             'selling_price': forms.NumberInput({'class': 'form-control'}),

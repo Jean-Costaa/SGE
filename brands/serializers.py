@@ -3,7 +3,7 @@ from . import models
 
 
 class BrandSerializers(serializers.ModelSerializer):
-    
+
     class Meta:
         model = models.Brand
         fields = '__all__'

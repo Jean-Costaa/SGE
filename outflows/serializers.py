@@ -3,7 +3,7 @@ from . import models
 
 
 class OutflowSerializers(serializers.ModelSerializer):
-    
+
     class Meta:
         model = models.Outflow
         fields = '__all__'

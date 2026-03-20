@@ -3,7 +3,7 @@ from . import models
 
 
 class InflowSerializers(serializers.ModelSerializer):
-    
+
     class Meta:
         model = models.Inflow
         fields = '__all__'

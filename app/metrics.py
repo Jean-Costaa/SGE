@@ -12,7 +12,7 @@ def get_product_metrics():
     total_cost_price = sum(product.cost_price * product.quantity for product in products)
     total_selling_price = sum(product.selling_price * product.quantity for product in products)
     total_quantity = sum(product.quantity for product in products)
-    total_profit = total_selling_price - total_cost_price 
+    total_profit = total_selling_price - total_cost_price
 
     return dict(
         total_cost_price=number_format(total_cost_price, decimal_pos=2, force_grouping=True),
@@ -27,12 +27,10 @@ def get_sales_metrics():
     total_sales = Outflow.objects.count()
     total_products_sold = Outflow.objects.aggregate(
         total_products_sold=Sum('quantity')
-    )['total_products_sold'] or 0 
+    )['total_products_sold'] or 0
     total_sales_value = sum(outflow.quantity * outflow.product.selling_price for outflow in outflows)
     total_sales_cost = sum(outflow.quantity * outflow.product.cost_price for outflow in outflows)
     total_sales_profit = total_sales_value - total_sales_cost
-
-
 
     return dict(
         total_sales=total_sales,
@@ -69,7 +67,7 @@ def get_daily_sales_quantity_data():
     for date in dates:
         sales_quantity = Outflow.objects.filter(created_at__date=date).count()
         quantities.append(sales_quantity)
-    
+
     return dict(
         dates=dates,
         values=quantities,

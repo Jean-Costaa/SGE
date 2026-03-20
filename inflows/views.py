@@ -18,7 +18,7 @@ class InflowListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
 
         if product:
             queryset = queryset.filter(product__title__icontains=product)
- 
+
         return queryset
 
 
@@ -43,4 +43,4 @@ class InflowCreateListAPIView(generics.ListCreateAPIView):
 
 class InflowRetrieveAPIView(generics.RetrieveAPIView):
     queryset = models.Inflow.objects.all()
-    serializer_class = serializers.InflowSerializers    
+    serializer_class = serializers.InflowSerializers

@@ -4,13 +4,13 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from . import models, forms, serializers
 
+
 class CategoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = models.Category
     template_name = 'category_list.html'
     context_object_name = 'categories'
     paginate_by = 10
     permission_required = 'categories.view_category'
-    
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -18,7 +18,7 @@ class CategoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
 
         if name:
             queryset = queryset.filter(name__icontains=name)
- 
+
         return queryset
 
 

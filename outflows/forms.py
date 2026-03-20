@@ -11,7 +11,7 @@ class OutflowForme(forms.ModelForm):
         widgets = {
             'product': forms.Select({'class': 'form-control'}),
             'quantity': forms.NumberInput({'class': 'form-control'}),
-            'descripition': forms.Textarea({'class': 'form-control', 'rows':3}),
+            'descripition': forms.Textarea({'class': 'form-control', 'rows': 3}),
         }
         labels = {
             'product': 'Produto',
@@ -27,5 +27,5 @@ class OutflowForme(forms.ModelForm):
             raise ValidationError(
                 f'A quantidade disponível em estoque para o produto {product.title} e de {product.quantity} unidades.'
             )
-        
+
         return quantity
