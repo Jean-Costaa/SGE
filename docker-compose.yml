@@ -1,7 +1,7 @@
 services:
 
     sge_web:
-        build: .
+        image: sge-sge_web:latest
         restart: always
         ports:
             - 8000:8000
