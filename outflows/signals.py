@@ -18,7 +18,7 @@ def send_outflow_event(sender, instance, created, **kwargs):
     notify = Notify()
 
     data = {
-        'product':instance.product,
+        'product': str(instance.product),
         'quantity': instance.quantity,
     }
 
