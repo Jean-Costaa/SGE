@@ -1,5 +1,6 @@
 from django.conf import settings
 from openai import OpenAI
+from . import prompts
 
 
 class SGEAgent:
@@ -15,11 +16,11 @@ class SGEAgent:
             messages=[
                 {
                     'role': 'system',
-                    'content': '',
+                    'content': prompts.SYSTEM_PROMPT,
                 },
                 {
                     'role': 'user',
-                    'content': '',
+                    'content': prompts.USER_PROMPT,
                 },
             ]
         )
