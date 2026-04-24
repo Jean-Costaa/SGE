@@ -1,6 +1,10 @@
+import json
 from django.conf import settings
+from django.core import serializers
 from openai import OpenAI
 from . import prompts
+from products.models import Product
+from outflows.models import Outflow
 
 
 class SGEAgent:
@@ -9,6 +13,14 @@ class SGEAgent:
         self.__client = OpenAI(
             api_key=settings.OPENAI_API_KEY
         )
+
+    def __get_data(self):
+        products = Product.objects.all()
+        outflows = Outflow.objects.all()
+        return json.dumps({
+            'products': serializers.serialize('json', products),
+            'outflows': serializers.serialize('json', outflows),
+        })
 
     def invoke(self):
         response = self.__client.chat.completions.create(
@@ -20,7 +32,7 @@ class SGEAgent:
                 },
                 {
                     'role': 'user',
-                    'content': prompts.USER_PROMPT,
+                    'content': prompts.USER_PROMPT.replace('{{data}}', self.__get_data()),
                 },
             ]
         )
