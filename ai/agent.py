@@ -2,7 +2,7 @@ import json
 from django.conf import settings
 from django.core import serializers
 from openai import OpenAI
-from . import prompts
+from . import prompts, models
 from products.models import Product
 from outflows.models import Outflow
 
@@ -37,4 +37,4 @@ class SGEAgent:
             ]
         )
         result = response.choices[0].message.content
-        return result
+        models.AIresult.objects.create(result=result)
